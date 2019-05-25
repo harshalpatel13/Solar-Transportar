@@ -1,0 +1,61 @@
+body,
+html {
+  height: 100%;
+  margin: 0 auto;
+}
+
+body {
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.3em;
+  display: grid;
+  grid-template-columns: 30% auto;
+}
+
+section {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.spgraph {
+  margin: 50px;
+}
+
+.link {
+  stroke: #000000;
+}
+
+.bold {
+  stroke: #ff0000;
+  stroke-width: 4;
+}
+
+.label {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+
+.node {
+  fill: #3e4552;
+  stroke: #3e4552;
+}
+
+table.input {
+  margin: 20px 50px;
+}
+
+table.input td {
+  width: 60px;
+  text-align: center;
+}
+/* You can add global styles to this file, and also import other style files */

@@ -1,0 +1,16 @@
+<div class="custom-padding">
+  <div class="card-columns">
+    <div class="card bg-warning" *ngFor="let route of solarRouteList">
+      <div class="card-body text-center">
+        <p class="card-text">Route Id : {{ route.routeId }}</p>
+        <p class="card-text">Planet Origin : {{ route.solarRouteOrigin }}</p>
+        <p class="card-text">
+          Planet Destination : {{ route.solarRouteDestination }}
+        </p>
+        <p class="card-text">
+          Distance(Light Years) : {{ route.solarRouteDistance }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
