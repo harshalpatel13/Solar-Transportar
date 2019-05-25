@@ -8,8 +8,7 @@ import { Planet, Route, Traffic } from 'src/app/models';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'solar-transporter';
