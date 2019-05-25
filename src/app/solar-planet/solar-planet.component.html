@@ -1,7 +1,8 @@
 <div class="custom-padding">
   <div class="card-columns">
-    <div class="card bg-info" *ngFor="let planet of planetList">
-      <div class="card-body text-center">
+    <div class="row card bg-info" *ngFor="let planet of planetList">
+      <div class="col-md-4 card-body text-center galaxy-img"></div>
+      <div class="col-md-8">
         <p class="card-text">Planet Name : {{ planet.planetName }}</p>
         <p class="card-text">Planet Node : {{ planet.planetNode }}</p>
       </div>
