@@ -12,13 +12,15 @@ import { SolarGraphService } from 'src/app/service/load-solar-graph.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.css']
 })
 export class HomeComponent implements OnInit {
   public routes: Route[];
   public planets: Planet[];
   @ViewChild('fromPlanetDropdown') fromPlanetDropdown: ElementRef;
   @ViewChild('toPlanetDropdown') toPlanetDropdown: ElementRef;
+  public isloadGalaxy = false;
   constructor(
     private solarPlanetService: SolarPlanetService,
     private routeService: RouteService,
@@ -28,11 +30,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   LoadSolarGalaxy() {
+    this.isloadGalaxy = true;
     this.planets = [];
     this.routes = [];
     this.solarPlanetService.getAll().subscribe(res => {
       this.planets = res;
       this.routeService.getAll().subscribe(res => {
+        this.isloadGalaxy = false;
         this.routes = res;
         this.solarGraphService.initialize(this.planets, this.routes);
         this.solarGraphService.loadGraph(

@@ -1,9 +1,15 @@
 .custom-padding {
   padding: 5%;
+  background-color: #343a40;
+  border-radius: 12px;
 }
 
 .galaxy-img {
   background-image: url('../../assets/images/galaxy.jpg');
   background-repeat: no-repeat, repeat;
   background-size: contain;
+}
+
+.font-style {
+  font-weight: bold;
 }

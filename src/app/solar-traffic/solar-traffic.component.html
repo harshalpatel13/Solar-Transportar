@@ -1,15 +1,26 @@
 <div class="custom-padding">
   <div class="card-columns">
-    <div class="card bg-success" *ngFor="let traffic of solarTrafficList">
-      <div class="card-body text-center">
-        <p class="card-text">Route Id : {{ traffic.solarTrafficRouteId }}</p>
-        <p class="card-text">
+    <div class="row card bg-light" *ngFor="let traffic of solarTrafficList">
+      <div class="col-md-4 card-body text-center">
+        <img
+          src="../../assets/images/galaxy.jpg"
+          class="rounded"
+          alt="Cinque Terre"
+          width="356"
+          height="236"
+        />
+      </div>
+      <div class="col-md-8">
+        <p class="card-text font-style">
+          Route Id : {{ traffic.solarTrafficRouteId }}
+        </p>
+        <p class="card-text font-style">
           Planet Origin : {{ traffic.solarTrafficOrigin }}
         </p>
-        <p class="card-text">
+        <p class="card-text font-style">
           Planet Destination : {{ traffic.solarTrafficDestination }}
         </p>
-        <p class="card-text">
+        <p class="card-text font-style">
           Traffic Delay (Light Years) : {{ traffic.solarTrafficDistance }}
         </p>
       </div>
