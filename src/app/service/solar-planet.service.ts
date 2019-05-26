@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class SolarPlanetService {
   private itemsCollection: AngularFirestoreCollection<Planet>;
   private collectionName: string = 'planets';
+  public planetlist = [];
 
   constructor(public db: AngularFirestore) {
     this.itemsCollection = this.db.collection(this.collectionName, ref =>
@@ -28,6 +29,7 @@ export class SolarPlanetService {
   public create(planet: Planet) {
     this.getAll().subscribe(res => {
       if (res.length > 0) {
+        this.planetlist = res;
         return res;
       } else {
         return this.db.collection(this.collectionName).add({

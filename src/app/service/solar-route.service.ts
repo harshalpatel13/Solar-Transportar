@@ -11,6 +11,7 @@ import { Route } from 'src/app/models/route.model';
 export class RouteService {
   private itemsCollection: AngularFirestoreCollection<Route>;
   private collectionName = 'routes';
+  public PlanetRouteList = [];
 
   constructor(public db: AngularFirestore) {
     this.itemsCollection = this.db.collection(this.collectionName, ref =>
@@ -28,6 +29,7 @@ export class RouteService {
   public create(route: Route) {
     this.getAll().subscribe(res => {
       if (res.length > 0) {
+        this.PlanetRouteList = res;
         return res;
       } else {
         return this.db.collection(this.collectionName).add({

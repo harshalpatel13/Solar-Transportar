@@ -26,86 +26,20 @@ export class StarPlanetSystemComponent implements OnInit {
   }
 
   LoadGalaxy() {
-    this.links = [
-      {
-        id: 'a',
-        source: '1',
-        target: '2',
-        label: ''
-      },
-      {
-        id: 'b',
-        source: '1',
-        target: '3',
-        label: ''
-      },
-      {
-        id: 'c',
-        source: '3',
-        target: '4',
-        label: ''
-      },
-      {
-        id: 'd',
-        source: '3',
-        target: '5',
-        label: ''
-      },
-      {
-        id: 'e',
-        source: '4',
-        target: '5',
-        label: ''
-      },
-      {
-        id: 'f',
-        source: '2',
-        target: '6',
-        label: ''
-      }
-    ];
+    this.solarPlanetService.planetlist.forEach(res => {
+      this.nodes.push({
+        id: res.planetNode,
+        label: res.planetNode + ', ' + res.planetName
+      });
+    });
 
-    this.nodes = [
-      {
-        id: '1',
-        label: 'Node A'
-      },
-      {
-        id: '2',
-        label: 'Node B'
-      },
-      {
-        id: '3',
-        label: 'Node C'
-      },
-      {
-        id: '4',
-        label: 'Node D'
-      },
-      {
-        id: '5',
-        label: 'Node E'
-      },
-      {
-        id: '6',
-        label: 'Node F'
-      }
-    ];
-
-    // this.routeService.getAll().subscribe(res => {
-    //   // res.forEach(route => {
-    //   //   this.links.push({
-    //   //     id: route.id,
-    //   //     source: route.planetOrigin,
-    //   //     target: route.planetDestination,
-    //   //     label: route.id
-    //   //   });
-    //   // });
-    //   this.solarPlanetService.getAll().subscribe(res => {
-    //     res.forEach(node => {
-    //       this.nodes.push({ id: node.planetNode, label: '' });
-    //     });
-    //   });
-    // });
+    this.routeService.PlanetRouteList.forEach(route => {
+      this.links.push({
+        id: route.routeId,
+        source: route.planetOrigin,
+        target: route.planetDestination,
+        label: route.routeId
+      });
+    });
   }
 }

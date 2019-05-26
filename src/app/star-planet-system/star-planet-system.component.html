@@ -1,6 +1,47 @@
-<p>
-  star-planet-system!
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <p>Solar Planet System</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <ngx-graph
+      [view]="[1800, 1000]"
+      layout="dagreCluster"
+      [links]="links"
+      [nodes]="nodes"
+      [legend]="false"
+      [draggingEnabled]="false"
+    >
+      <ng-template #nodeTemplate let-node>
+        <svg:g
+          class="node"
+          ngx-tooltip
+          [tooltipPlacement]="'top'"
+          [tooltipType]="'tooltip'"
+        >
+          <!-- <svg:ngx-charts-bar-vertical-stacked /> -->
+          <!-- <svg:rect [attr.width]="node.width" [attr.height]="node.height" /> -->
+          <svg:text
+            alignment-baseline="central"
+            [attr.x]="10"
+            [attr.y]="node.height / 2"
+          >
+            {{ node.label }}
+          </svg:text>
+        </svg:g>
+      </ng-template>
+
+      <!-- <ng-template #linkTemplate let-link>
+        <svg:g class="edge">
+          <svg:path stroke-width="2" marker-end="url(#arrow)"></svg:path>
+        </svg:g>
+      </ng-template> -->
+    </ngx-graph>
+  </div>
+</div>
+
+<!-- <svg:ngx-charts-bar-vertical-stacked -->
 
 <!-- <ngx-graph
   class="chart-container"
@@ -41,11 +82,3 @@
   ]"
 >
 </ngx-graph> -->
-
-<ngx-graph
-  class="chart-container"
-  [view]="[500, 200]"
-  [links]="links"
-  [nodes]="nodes"
->
-</ngx-graph>
