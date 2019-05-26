@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.prod';
+import { StarPlanetSystemComponent } from './star-planet-system/star-planet-system.component';
+import { NgxGraphModule, GraphComponent } from '@swimlane/ngx-graph';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,17 @@ import { environment } from 'src/environments/environment.prod';
     SolarPlanetComponent,
     SolarRouteComponent,
     SolarTrafficComponent,
-    HomeComponent
+    HomeComponent,
+    StarPlanetSystemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgxGraphModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
