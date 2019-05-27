@@ -20,3 +20,18 @@
   border-color: #17a2b8;
   padding: 1%;
 }
+
+.text-link {
+  color: white !important;
+  text-decoration: underline;
+}
+
+.backgroundImg {
+  background-image: url('../../assets/images/galaxy.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  padding: 8%;
+  border-radius: 8px;
+}
