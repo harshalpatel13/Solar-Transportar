@@ -438,4 +438,70 @@ export class SolarGraphService {
       return dist;
     }
   }
+
+  public loadGraphPath(
+    hasShortestRoute,
+    sourceValue,
+    targetValue,
+    graphPath,
+    planets,
+    routes
+  ): string {
+    const planetNodes = planets.map(planet => {
+      return new Node(planet.planetName, planet.planetNode);
+    });
+
+    const routeLinks = routes.map(route => {
+      return new Link(
+        route.planetOrigin,
+        route.planetDestination,
+        route.distance
+      );
+    });
+
+    const graphNodes = {
+      nodes: planetNodes.map(planetNode => ({
+        name: planetNode.id,
+        id: planetNode.name
+      }))
+    };
+
+    const graphLinks = {
+      links: routeLinks.map(routeLink => ({
+        source: routeLink.source,
+        target: routeLink.target,
+        value: routeLink.value
+      }))
+    };
+
+    const nodes = graphNodes.nodes.map(nodeItem => <Node>nodeItem);
+    const links = graphLinks.links.map(linkItem => <Link>linkItem);
+
+    const graph: Graph = <Graph>{ nodes, links };
+
+    if (hasShortestRoute) {
+      const sourceIndex = this.getNodeIndex(sourceValue, graph.nodes);
+      const targetIndex = this.getNodeIndex(targetValue, graph.nodes);
+      const routeResult = this.findRoute(sourceIndex, targetIndex, graph);
+      return drawTextPath(routeResult.path);
+    } else {
+      return '';
+    }
+
+    function drawTextPath(shortestPath) {
+      if (shortestPath && shortestPath.length > 0) {
+        const source = shortestPath[0].source;
+        const immediateTarget = shortestPath[0].target;
+        const targets = shortestPath.map(item => item.target).slice(1, -1);
+        const target = shortestPath[shortestPath.length - 1].target;
+        const pathArray =
+          shortestPath.length > 1
+            ? [source, immediateTarget, ...targets, target]
+            : [source, ...targets, target];
+        return (graphPath = pathArray.join(' -> '));
+      } else {
+        return '';
+      }
+    }
+  }
 }

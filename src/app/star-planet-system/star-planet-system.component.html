@@ -1,6 +1,39 @@
 <div class="row">
   <div class="col-md-4">
-    <p>Solar Planet System</p>
+    <label for="planet">Source Planet: </label>
+    <select
+      #fromPlanetDropdown
+      (change)="onPlanetChanged()"
+      class="form-control1 form-control"
+      id="planet"
+      name="planet"
+    >
+      <option *ngFor="let planet of planets" [value]="planet.planetNode">
+        {{ planet.planetName }} ({{ planet.planetNode }})
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="planet">Destination Planet: </label>
+    <select
+      #toPlanetDropdown
+      (change)="onPlanetChanged()"
+      class="form-control1 form-control"
+      id="planet"
+      name="planet"
+    >
+      <option *ngFor="let planet of planets" [value]="planet.planetNode">
+        {{ planet.planetName }} ({{ planet.planetNode }})
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label>Solar Galaxy Path </label>
+    <span
+      ><P class="path-style">{{ galaxyPath }} </P></span
+    >
   </div>
 </div>
 <div class="row">

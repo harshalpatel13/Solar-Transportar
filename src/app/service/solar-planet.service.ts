@@ -20,9 +20,26 @@ export class SolarPlanetService {
   }
 
   loadPlanets(data) {
+    this.planetlist = [];
     Object.keys(data).forEach(key => {
       const planetData = Planet.createFromJSON(JSON.stringify(data[key]));
-      this.create(planetData);
+      this.planetlist.push(planetData);
+    });
+    this.loadPlanetList(this.planetlist);
+  }
+
+  public loadPlanetList(planetList: Planet[]) {
+    this.getAll().subscribe(res => {
+      if (res.length > 0) {
+        return res;
+      } else {
+        planetList.forEach(planet => {
+          return this.db.collection(this.collectionName).add({
+            planetNode: planet.planetNode,
+            planetName: planet.planetName
+          });
+        });
+      }
     });
   }
 
