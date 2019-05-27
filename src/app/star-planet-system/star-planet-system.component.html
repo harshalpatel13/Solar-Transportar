@@ -36,6 +36,20 @@
     >
   </div>
 </div>
+
+<div class="row padding-style">
+  <div class="col-md-4">
+    <button class="btn btn-info" (click)="LoadSolarGalaxy()">
+      Load Solar Galaxy
+      <i
+        *ngIf="isloadGalaxy"
+        class="fa fa-spinner fa-spin"
+        style="font-size:24px"
+      ></i>
+    </button>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-12">
     <ngx-graph
@@ -45,6 +59,7 @@
       [nodes]="nodes"
       [legend]="false"
       [draggingEnabled]="false"
+      [clusters]="cluster"
     >
       <ng-template #nodeTemplate let-node>
         <svg:g
@@ -53,8 +68,6 @@
           [tooltipPlacement]="'top'"
           [tooltipType]="'tooltip'"
         >
-          <!-- <svg:ngx-charts-bar-vertical-stacked /> -->
-          <!-- <svg:rect [attr.width]="node.width" [attr.height]="node.height" /> -->
           <svg:text
             alignment-baseline="central"
             [attr.x]="10"
@@ -64,54 +77,6 @@
           </svg:text>
         </svg:g>
       </ng-template>
-
-      <!-- <ng-template #linkTemplate let-link>
-        <svg:g class="edge">
-          <svg:path stroke-width="2" marker-end="url(#arrow)"></svg:path>
-        </svg:g>
-      </ng-template> -->
     </ngx-graph>
   </div>
 </div>
-
-<!-- <svg:ngx-charts-bar-vertical-stacked -->
-
-<!-- <ngx-graph
-  class="chart-container"
-  [view]="[500, 200]"
-  [links]="[
-    {
-      id: 'a',
-      source: 'first',
-      target: 'second',
-      label: 'is parent of'
-    },
-    {
-      id: 'b',
-      source: 'first',
-      target: 'third',
-      label: 'custom label'
-    },
-    {
-      id: 'b',
-      source: 'second',
-      target: 'third',
-      label: 'custom label'
-    }
-  ]"
-  [nodes]="[
-    {
-      id: 'first',
-      label: 'A'
-    },
-    {
-      id: 'second',
-      label: 'B'
-    },
-    {
-      id: 'third',
-      label: 'C'
-    }
-  ]"
->
-</ngx-graph> -->

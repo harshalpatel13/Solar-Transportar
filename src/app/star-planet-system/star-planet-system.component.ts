@@ -18,6 +18,8 @@ export class StarPlanetSystemComponent implements OnInit {
   public planets = [];
   public galaxyPath: string;
   public solarRouteList = [];
+  public isloadGalaxy: boolean;
+  public cluster = [];
   @ViewChild('fromPlanetDropdown') fromPlanetDropdown: ElementRef;
   @ViewChild('toPlanetDropdown') toPlanetDropdown: ElementRef;
   constructor(
@@ -64,6 +66,13 @@ export class StarPlanetSystemComponent implements OnInit {
       this.planets,
       this.solarRouteList
     );
+    this.cluster = [
+      {
+        id: 'grpah',
+        label: '',
+        childNodeIds: this.galaxyPath.split(',')
+      }
+    ];
     console.log(this.galaxyPath);
   }
 
@@ -81,6 +90,25 @@ export class StarPlanetSystemComponent implements OnInit {
         source: route.planetOrigin,
         target: route.planetDestination,
         label: route.routeId
+      });
+    });
+  }
+
+  LoadSolarGalaxy() {
+    this.isloadGalaxy = true;
+    // this.planets = [];
+    // this.routes = [];
+    this.solarPlanetService.getAll().subscribe(res => {
+      this.planets = res;
+      this.routeService.getAll().subscribe(res => {
+        this.isloadGalaxy = false;
+        // this.routes = res;
+        // this.solarGraphService.initialize(this.planets, this.routes);
+        // this.solarGraphService.loadGraph(
+        //   false,
+        //   this.fromPlanetDropdown.nativeElement.value,
+        //   this.toPlanetDropdown.nativeElement.value
+        // );
       });
     });
   }

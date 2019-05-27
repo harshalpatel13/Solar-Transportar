@@ -7,8 +7,8 @@ import { HomeComponent } from 'src/app/home/home.component';
 import { StarPlanetSystemComponent } from 'src/app/star-planet-system/star-planet-system.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: StarPlanetSystemComponent },
+  { path: 'home', component: StarPlanetSystemComponent },
   { path: 'solargraph', component: StarPlanetSystemComponent },
   { path: 'planets', component: SolarPlanetComponent },
   { path: 'routes', component: SolarRouteComponent },

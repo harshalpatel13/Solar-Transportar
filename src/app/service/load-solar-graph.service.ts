@@ -498,7 +498,7 @@ export class SolarGraphService {
           shortestPath.length > 1
             ? [source, immediateTarget, ...targets, target]
             : [source, ...targets, target];
-        return (graphPath = pathArray.join(' -> '));
+        return (graphPath = pathArray.join(','));
       } else {
         return '';
       }
