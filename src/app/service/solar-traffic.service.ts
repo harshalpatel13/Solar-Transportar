@@ -12,12 +12,17 @@ export class TrafficService {
   private itemsCollection: AngularFirestoreCollection<Traffic>;
   private collectionName: string = 'traffic';
 
-  constructor(public db: AngularFirestore) {
-    this.itemsCollection = this.db.collection(this.collectionName, ref =>
-      ref.orderBy('planetOrigin', 'asc')
+  constructor(public fireStoreDatabase: AngularFirestore) {
+    this.itemsCollection = this.fireStoreDatabase.collection(
+      this.collectionName,
+      ref => ref.orderBy('planetOrigin', 'asc')
     );
   }
 
+  /**
+   *
+   * @param data  populate planet traffic nodes from excel to firebase
+   */
   loadTraffic(data) {
     Object.keys(data).forEach(key => {
       const trafficRouteData = Traffic.createFromJSON(
@@ -27,12 +32,16 @@ export class TrafficService {
     });
   }
 
+  /**
+   *
+   * @param traffic Create planet traffic node in firebase
+   */
   public create(traffic: Traffic) {
     this.getAll().subscribe(res => {
       if (res.length > 0) {
         return res;
       } else {
-        return this.db.collection(this.collectionName).add({
+        return this.fireStoreDatabase.collection(this.collectionName).add({
           routeId: traffic.routeId,
           planetOrigin: traffic.planetOrigin,
           planetDestination: traffic.planetDestination,
@@ -42,13 +51,9 @@ export class TrafficService {
     });
   }
 
-  public get(trafficKey) {
-    return this.db
-      .collection(this.collectionName)
-      .doc(trafficKey)
-      .snapshotChanges();
-  }
-
+  /**
+   * Fetch all planet traffic nodes from firebase
+   */
   public getAll(): Observable<Traffic[]> {
     return this.itemsCollection.snapshotChanges().pipe(
       map(changes =>

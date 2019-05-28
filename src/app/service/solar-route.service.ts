@@ -13,12 +13,17 @@ export class RouteService {
   private collectionName = 'routes';
   public PlanetRouteList = [];
 
-  constructor(public db: AngularFirestore) {
-    this.itemsCollection = this.db.collection(this.collectionName, ref =>
-      ref.orderBy('planetOrigin', 'asc')
+  constructor(public fireStoreDatabase: AngularFirestore) {
+    this.itemsCollection = this.fireStoreDatabase.collection(
+      this.collectionName,
+      ref => ref.orderBy('planetOrigin', 'asc')
     );
   }
 
+  /**
+   *
+   * @param data  populate planet route nodes from excel to firebase
+   */
   loadRoutes(data) {
     Object.keys(data).forEach(key => {
       const solarRouteData = Route.createFromJSON(JSON.stringify(data[key]));
@@ -26,13 +31,17 @@ export class RouteService {
     });
   }
 
+  /**
+   *
+   * @param route Create planet route node in firebase
+   */
   public create(route: Route) {
     this.getAll().subscribe(res => {
       if (res.length > 0) {
         this.PlanetRouteList = res;
         return res;
       } else {
-        return this.db.collection(this.collectionName).add({
+        return this.fireStoreDatabase.collection(this.collectionName).add({
           routeId: route.routeId,
           planetOrigin: route.planetOrigin,
           planetDestination: route.planetDestination,
@@ -42,13 +51,9 @@ export class RouteService {
     });
   }
 
-  public get(routeKey) {
-    return this.db
-      .collection(this.collectionName)
-      .doc(routeKey)
-      .snapshotChanges();
-  }
-
+  /**
+   * Fetch all planet route nodes from firebase
+   */
   public getAll(): Observable<Route[]> {
     return this.itemsCollection.snapshotChanges().pipe(
       map(changes =>
