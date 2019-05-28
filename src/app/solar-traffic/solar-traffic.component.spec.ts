@@ -28,7 +28,16 @@ describe('SolarTrafficComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Solar Traffic Component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render Header with correct "Solar Planet Traffic" text', () => {
+    const fixture = TestBed.createComponent(SolarTrafficComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#headertxt').textContent).toContain(
+      'Solar Planet Traffic'
+    );
   });
 });

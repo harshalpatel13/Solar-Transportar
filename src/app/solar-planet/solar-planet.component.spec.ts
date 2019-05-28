@@ -28,7 +28,16 @@ describe('SolarPlanetComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(1).toEqual(1);
+  it('should create Solar Planet component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render Header with correct "Solar Planets" text', () => {
+    const fixture = TestBed.createComponent(SolarPlanetComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#headertxt').textContent).toContain(
+      'Solar Planets'
+    );
   });
 });

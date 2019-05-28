@@ -17,7 +17,28 @@ describe('NavBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(1).toEqual(1);
+  it('should create Navigation-Bar Component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render Header with correct "SOLAR-SYSTEM" text', () => {
+    const fixture = TestBed.createComponent(NavBarComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#navHeaderText').textContent).toContain(
+      'SOLAR-SYSTEM'
+    );
+  });
+
+  it('should render link with correct "Dashboard" text', () => {
+    const fixture = TestBed.createComponent(NavBarComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#dashboardlink').textContent).toContain(
+      'Dashboard'
+    );
+    expect(compiled.querySelector('#navHeaderText').textContent).toContain(
+      'SOLAR-SYSTEM'
+    );
   });
 });

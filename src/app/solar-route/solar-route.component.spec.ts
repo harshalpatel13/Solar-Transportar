@@ -28,7 +28,16 @@ describe('SolarRouteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Solar Route Component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render Header with correct "Solar Planet Routes" text', () => {
+    const fixture = TestBed.createComponent(SolarRouteComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#headertxt').textContent).toContain(
+      'Solar Planet Routes'
+    );
   });
 });
