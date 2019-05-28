@@ -16,7 +16,6 @@ export class AppComponent {
 
   /**
    * Creates an instance of component.
-   * Initialize multiple sevices
    */
   constructor(
     private fileReaderService: FileReaderService,
@@ -28,8 +27,12 @@ export class AppComponent {
   }
 
   /**
-   * Initialize solar planet galaxy
-   */
+   * @ngdoc function
+   * @name loadSolarPlnaet
+   * @methodOf AppComponent
+   * @description
+   * @param Load planetList,solarRouteList,solarTrafficList
+   **/
   loadSolarPlnaet() {
     forkJoin(
       this.fileReaderService.getPlanetData(),

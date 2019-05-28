@@ -10,7 +10,6 @@ import { SolarPlanetService } from 'src/app/service/solar-planet.service';
 })
 export class SolarPlanetComponent implements OnInit {
   public planetList = [];
-  trafficImage: any = '../../../assets/images/galaxy.jpg';
 
   /**
    * Creates an instance of solar-Route component.
@@ -21,8 +20,12 @@ export class SolarPlanetComponent implements OnInit {
   ) {}
 
   /**
-   * Load all planets.
-   */
+   * @ngdoc function
+   * @name ngOnInit
+   * @methodOf SolarPlanetComponent
+   * @description
+   * @param Initialize planetList
+   **/
   ngOnInit() {
     this.solarPlanetService.getAll().subscribe(planetDataList => {
       planetDataList.forEach(planetData => {

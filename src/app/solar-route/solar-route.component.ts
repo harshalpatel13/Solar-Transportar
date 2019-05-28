@@ -20,8 +20,12 @@ export class SolarRouteComponent implements OnInit {
   ) {}
 
   /**
-   * Load all planets Rouets.
-   */
+   * @ngdoc function
+   * @name ngOnInit
+   * @methodOf SolarRouteComponent.component
+   * @description
+   * @param Initialize solarRouteList
+   **/
   ngOnInit() {
     this.solarRouteService.getAll().subscribe(planetDataList => {
       planetDataList.forEach(planetData => {

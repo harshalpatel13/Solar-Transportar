@@ -10,15 +10,20 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class SolarPlanetService {
   private itemsCollection: AngularFirestoreCollection<Planet>;
-  private collectionName: string = 'planets';
+  private collectionName = 'planets';
   public planetlist = [];
 
-  constructor(public db: AngularFirestore) {
-    this.itemsCollection = this.db.collection(this.collectionName, ref =>
-      ref.orderBy('planetName', 'asc')
+  constructor(public fireStoreDatabase: AngularFirestore) {
+    this.itemsCollection = this.fireStoreDatabase.collection(
+      this.collectionName,
+      ref => ref.orderBy('planetName', 'desc')
     );
   }
 
+  /**
+   *
+   * @param data  populate planet nodes from excel to firebase
+   */
   loadPlanets(data) {
     this.planetlist = [];
     Object.keys(data).forEach(key => {
@@ -34,7 +39,7 @@ export class SolarPlanetService {
         return res;
       } else {
         planetList.forEach(planet => {
-          return this.db.collection(this.collectionName).add({
+          return this.fireStoreDatabase.collection(this.collectionName).add({
             planetNode: planet.planetNode,
             planetName: planet.planetName
           });
@@ -43,13 +48,17 @@ export class SolarPlanetService {
     });
   }
 
+  /**
+   *
+   * @param planet Create planet node in firebase
+   */
   public create(planet: Planet) {
     this.getAll().subscribe(res => {
       if (res.length > 0) {
         this.planetlist = res;
         return res;
       } else {
-        return this.db.collection(this.collectionName).add({
+        return this.fireStoreDatabase.collection(this.collectionName).add({
           planetNode: planet.planetNode,
           planetName: planet.planetName
         });
@@ -57,13 +66,9 @@ export class SolarPlanetService {
     });
   }
 
-  public get(planetKey) {
-    return this.db
-      .collection(this.collectionName)
-      .doc(planetKey)
-      .snapshotChanges();
-  }
-
+  /**
+   * Fetch all nodes from firebase
+   */
   public getAll(): Observable<Planet[]> {
     return this.itemsCollection.snapshotChanges().pipe(
       map(changes =>

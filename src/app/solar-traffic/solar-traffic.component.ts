@@ -20,8 +20,12 @@ export class SolarTrafficComponent implements OnInit {
   ) {}
 
   /**
-   * Load traffic node for planets.
-   */
+   * @ngdoc function
+   * @name ngOnInit
+   * @methodOf SolarTrafficComponent
+   * @description
+   * @param Initialize solarTrafficList
+   **/
   ngOnInit() {
     this.trafficService.getAll().subscribe(trafficList => {
       trafficList.forEach(trafficData => {

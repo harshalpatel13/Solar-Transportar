@@ -10,24 +10,37 @@ export class FileReaderService {
   private routesSheetIndex = 1;
   private trafficSheetIndex = 2;
 
+  /**
+   * Read Planetlist data from excel
+   */
   public getPlanetData() {
     return new Promise((res, rej) => {
       res(this.getWorksheetDataJsonData(this.planetsSheetIndex));
     });
   }
 
+  /**
+   * Read Planetroute data from excel
+   */
   public getRouteData() {
     return new Promise((res, rej) => {
       res(this.getWorksheetDataJsonData(this.routesSheetIndex));
     });
   }
 
+  /**
+   * Read Planettraffic data from excel
+   */
   public getTrafficData() {
     return new Promise((res, rej) => {
       res(this.getWorksheetDataJsonData(this.trafficSheetIndex));
     });
   }
 
+  /**
+   *
+   * @param index - read specific sheet data from excel
+   */
   public getWorksheetDataJsonData(index) {
     return new Promise((resolve, reject) => {
       const url = this.dataFileUrl;

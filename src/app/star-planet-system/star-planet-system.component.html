@@ -29,7 +29,7 @@
     >
       <option
         class="destination-menu-item"
-        *ngFor="let planet of planets"
+        *ngFor="let planet of planets.reverse()"
         [value]="planet.planetNode"
       >
         {{ planet.planetName }} ({{ planet.planetNode }})
