@@ -93,25 +93,4 @@ export class StarPlanetSystemComponent implements OnInit {
       this.onPlanetChanged();
     });
   }
-
-  /**
-   * Load Galaxy graph
-   */
-  // LoadGalaxy() {
-  //   this.solarPlanetService.planetlist.forEach(res => {
-  //     this.nodes.push({
-  //       id: res.planetNode,
-  //       label: res.planetNode + ', ' + res.planetName
-  //     });
-  //   });
-
-  //   this.routeService.PlanetRouteList.forEach(route => {
-  //     this.links.push({
-  //       id: route.routeId,
-  //       source: route.planetOrigin,
-  //       target: route.planetDestination,
-  //       label: route.routeId
-  //     });
-  //   });
-  // }
 }

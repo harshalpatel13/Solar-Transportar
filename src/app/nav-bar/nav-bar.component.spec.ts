@@ -37,8 +37,5 @@ describe('NavBarComponent', () => {
     expect(compiled.querySelector('#dashboardlink').textContent).toContain(
       'Dashboard'
     );
-    expect(compiled.querySelector('#navHeaderText').textContent).toContain(
-      'SOLAR-SYSTEM'
-    );
   });
 });

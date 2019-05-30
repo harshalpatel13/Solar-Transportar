@@ -1,76 +1,33 @@
-<!-- <div>
-  <div class="row">
-    <div class="col-md-4">
-      <label for="planet">Source Planet: </label>
-      <select
-        #fromPlanetDropdown
-        (change)="onPlanetChanged()"
-        class="form-control1 form-control"
-        id="planet"
-        name="planet"
-      >
-        <option *ngFor="let planet of planets" [value]="planet.planetNode">
-          {{ planet.planetName }} ({{ planet.planetNode }})
-        </option>
-      </select>
-    </div>
-
-    <div class="col-md-4">
-      <label for="planet">Destination Planet: </label>
-      <select
-        #toPlanetDropdown
-        (change)="onPlanetChanged()"
-        class="form-control1 form-control"
-        id="planet"
-        name="planet"
-      >
-        <option *ngFor="let planet of planets" [value]="planet.planetNode">
-          {{ planet.planetName }} ({{ planet.planetNode }})
-        </option>
-      </select>
-    </div>
-  </div>
-
-  <div class="row padding-style">
-    <div class="col-md-4">
-      <button class="btn btn-info" (click)="LoadSolarGalaxy()">
-        Load Solar Galaxy
-        <i
-          *ngIf="isloadGalaxy"
-          class="fa fa-spinner fa-spin"
-          style="font-size:24px"
-        ></i>
-      </button>
-    </div>
-  </div>
-
-  <div class="row path-container padding-style">
-    <span class="path"></span>
-  </div>
-
-  <svg></svg>
-</div> -->
-
 <div class="backgroundImg">
   <div class="card bg-dark well well-sm">
     <a
+      id="galaxysystem"
       class="card-body nav-link tab-underline text-link"
       routerLink="/solargraph"
       >Solar Galaxy System</a
     >
   </div>
   <div class="card bg-dark well well-sm padding-style">
-    <a class="card-body nav-link tab-underline text-link" routerLink="/planets"
+    <a
+      id="planet"
+      class="card-body nav-link tab-underline text-link"
+      routerLink="/planets"
       >Solar Planets</a
     >
   </div>
   <div class="card bg-dark well well-sm padding-style">
-    <a class="card-body nav-link tab-underline text-link" routerLink="/routes"
+    <a
+      id="route"
+      class="card-body nav-link tab-underline text-link"
+      routerLink="/routes"
       >Solar Planet Routes</a
     >
   </div>
   <div class="card bg-dark text-white well well-sm padding-style">
-    <a class="card-body nav-link tab-underline text-link" routerLink="/traffic"
+    <a
+      id="traffic"
+      class="card-body nav-link tab-underline text-link"
+      routerLink="/traffic"
       >Solar Planet Traffic</a
     >
   </div>
