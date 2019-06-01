@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyDoiAvRj_md4kPIVse4RXgZl84jaPhxdV0',
-    authDomain: 'solar-system-354c4.firebaseapp.com',
-    databaseURL: 'https://solar-system-354c4.firebaseio.com',
-    projectId: 'solar-system-354c4',
-    storageBucket: 'solar-system-354c4.appspot.com',
-    messagingSenderId: '430358704975',
-    appId: '1:430358704975:web:392ae71e0d0de013'
+    apiKey: 'AIzaSyBVBS_gd3RkWCb3NVDvTKWh-7pFpYT6Uts',
+    authDomain: 'solar-transportar.firebaseapp.com',
+    databaseURL: 'https://solar-transportar.firebaseio.com',
+    projectId: 'solar-transportar',
+    storageBucket: 'solar-transportar.appspot.com',
+    messagingSenderId: '1004210613568',
+    appId: '1:1004210613568:web:62ab6754154548d0'
   }
 };
