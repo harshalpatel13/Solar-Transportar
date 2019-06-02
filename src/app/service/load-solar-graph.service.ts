@@ -55,13 +55,13 @@ export class SolarGraphService {
     const nodeCount = distances.length,
       infinity = 99999,
       shortestPath = new Array(nodeCount),
-      nodeChecked = new Array(nodeCount),
-      pred = new Array(nodeCount);
+      visitedNode = new Array(nodeCount),
+      preVertex = new Array(nodeCount);
 
     for (let i = 0; i < nodeCount; i++) {
       shortestPath[i] = infinity;
-      pred[i] = null;
-      nodeChecked[i] = false;
+      preVertex[i] = null;
+      visitedNode[i] = false;
     }
 
     shortestPath[start] = 0;
@@ -71,7 +71,7 @@ export class SolarGraphService {
       let closestNode = null;
 
       for (let j = 0; j < nodeCount; j++) {
-        if (!nodeChecked[j]) {
+        if (!visitedNode[j]) {
           if (shortestPath[j] <= minDist) {
             minDist = shortestPath[j];
             closestNode = j;
@@ -79,10 +79,10 @@ export class SolarGraphService {
         }
       }
 
-      nodeChecked[closestNode] = true;
+      visitedNode[closestNode] = true;
 
       for (let k = 0; k < nodeCount; k++) {
-        if (!nodeChecked[k]) {
+        if (!visitedNode[k]) {
           const nextDistance = distanceBetween(closestNode, k, distances);
 
           if (
@@ -95,7 +95,7 @@ export class SolarGraphService {
 
             shortestPath[k] = soFar + extra;
 
-            pred[k] = closestNode;
+            preVertex[k] = closestNode;
           }
         }
       }
@@ -108,7 +108,7 @@ export class SolarGraphService {
       let v = end;
 
       while (v >= 0) {
-        v = pred[v];
+        v = preVertex[v];
 
         if (v !== null && v >= 0) {
           step['source'] = graph.nodes[v].id;
