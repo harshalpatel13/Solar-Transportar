@@ -32,7 +32,7 @@ export class SolarGraphService {
       distances[i] = [];
 
       for (let j = 0; j < graph.nodes.length; j++) {
-        distances[i][j] = 'x';
+        distances[i][j] = '∞';
       }
     }
 
@@ -139,7 +139,7 @@ export class SolarGraphService {
     function distanceBetween(fromNode, toNode, currentDistances) {
       let dist = currentDistances[fromNode][toNode];
 
-      if (dist === 'x') {
+      if (dist === '∞') {
         dist = infinity;
       }
 
